@@ -11,8 +11,12 @@
     var console = (window.console = window.console || {});
 
     while (length--) {
+        var method = methods[length];
+
         // Only stub undefined methods.
-        console[methods[length]] = console[methods[length]] || noop;
+        if (!console[method]) {
+            console[method] = noop;
+        }
     }
 }());
 
